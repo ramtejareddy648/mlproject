@@ -17,14 +17,7 @@ class CustomException(Exception):
     
     def __str__(self):
         return self.error_message
-if __name__=='__main__':
-    
-    try:
-        10/0
-        
-    except Exception as e:
-        logging.info('zero division error')
-        raise CustomException(str(e),sys)
+
 
     
 
