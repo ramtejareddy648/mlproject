@@ -3,8 +3,10 @@ import sys
 from src.components.exception import CustomException
 from src.components.logger import logging
 from dataclasses import dataclass
-import pandas as pd 
+import pandas as pd
 from sklearn.model_selection import train_test_split
+from src.components.data_transfer import DataTransfer
+from src.components.model_train import Modeltrain
 
 
 @dataclass
@@ -58,3 +60,12 @@ if __name__=="__main__":
     
     obj=DataingestionInitiation()
     train_data,test_data=obj.data__ingestion_initiation()
+    
+    
+    datatransferobj=DataTransfer()
+    train_arr,test_arr=datatransferobj.data_transfer_initation(train_data,test_data)
+    
+    
+    model_obj=Modeltrain()
+    r2score=model_obj.model_train_initation(train_arr,test_arr)
+    print(r2score)
